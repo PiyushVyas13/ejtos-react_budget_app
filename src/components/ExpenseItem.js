@@ -1,7 +1,6 @@
 import { useContext } from "react"
 import { AppContext } from "../context/AppContext"
 import {TiDelete} from 'react-icons/ti'
-import { FaPlusCircle } from "react-icons/fa";
 
 const ExpenseItem = ({id, name, cost}) => {
     const {dispatch, currency} = useContext(AppContext);
@@ -25,13 +24,34 @@ const ExpenseItem = ({id, name, cost}) => {
         })
     }
 
+    const decreaseAllocation = (name) => {
+
+        if(cost <= 0) {
+            return;
+        }
+        const expense = {
+            name,
+            cost: -10
+        }
+
+        dispatch({
+            type: "ADD_EXPENSE",
+            payload: expense
+        })
+    }
+
     return(
         <tr>
             <td>{name}</td>
             <td>{currency}{cost}</td>
-            <td style={{paddingLeft: "1.8rem"}}>
-                <button onClick={(e) => increaseAllocation(name)}>
-                    +
+            <td>
+                <button style={{background: "transparent", border: "none"}} onClick={(e) => increaseAllocation(name)}>
+                    <img src="/plus_icon.png" alt=""/>
+                </button>
+            </td>
+            <td>
+                <button style={{background: "transparent", border: "none"}} onClick={(e) => decreaseAllocation(name)}>
+                    <img src="/minus_icon.png" alt=""/>
                 </button>
             </td>
             <td style={{paddingLeft: "1.2rem"}}>

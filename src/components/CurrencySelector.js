@@ -16,7 +16,7 @@ const CurrencySelector = () => {
                 <span>Currency: </span>
                 <select style={{display: "inline", width: "60%"}} className="form-select form-select-sm" onChange={handleCurrencyChange}>
                     <option selected={currency === "$"}value='$'>$ Dollar</option>
-                    <option selected={currency === "&pound;"} value="&pound;">&pound; Pound</option>
+                    <option selected={currency === "£"} value="&pound;">&pound; Pound</option>
                     <option selected={currency === "&euro;"}value="&euro;">&euro; Euro</option>
                     <option selected={currency === "&#8377;"}value="&#8377;">&#8377; Ruppee</option>
                 </select>
